@@ -1,0 +1,6 @@
+name: WorldRouter
+version: '${version}'
+
+main: fr.jessee.worldRouter.WorldRouter
+api-version: '26.1.2'
+load: POSTWORLD
