@@ -11,8 +11,12 @@ public class Join implements Listener {
     public void onJoin(PlayerJoinEvent e) {
         final Player PLAYER = e.getPlayer();
 
-        if (PLAYER.getWorld().getUID().equals(WorldRouter.getWorldRouterCore().getWorld().getUID())) return;
+        if (WorldRouter.getWorldRouterCore().getWorld().isEmpty()) {
+            return;
+        }
 
-        PLAYER.teleportAsync(WorldRouter.getWorldRouterCore().getWorld().getSpawnLocation());
+        if (PLAYER.getWorld().getUID().equals(WorldRouter.getWorldRouterCore().getWorld().get().getUID())) return;
+
+        PLAYER.teleportAsync(WorldRouter.getWorldRouterCore().getWorld().get().getSpawnLocation());
     }
 }
