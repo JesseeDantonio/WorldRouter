@@ -43,6 +43,7 @@ public final class WorldRouter extends JavaPlugin {
         command.setExecutor(new WRCommand());
 
         worldRouterCore = new WorldRouterCore(world.get());
+        WorldRouterAPI.register(worldRouterCore);
     }
 
     @Override
