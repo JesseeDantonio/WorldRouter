@@ -1,6 +1,16 @@
 name: WorldRouter
 version: '${version}'
+authors: [ Jessee_Dantonio ]
+commands:
+  wr:
+    description: "Command to manage worlds"
+    usage: '/worldrouter <argument>'
+    aliases: [worldrouter]
+    permission-message: You do not have permission!
+    default: true
 
 main: fr.jessee.worldRouter.WorldRouter
 api-version: '26.1.2'
 load: POSTWORLD
+
+depend: [LuckPerms]
