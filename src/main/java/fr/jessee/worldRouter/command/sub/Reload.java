@@ -43,7 +43,7 @@ public class Reload extends AbstractSubCommand {
         }
 
         WorldRouter.getLangFile().reload();
-        WorldRouter.loadWorld();
+        WorldRouter.getWorldRouterCore().restart();
         p.sendMessage(WorldRouter.getLangFile().getString("reload_success"));
     }
 
@@ -52,7 +52,7 @@ public class Reload extends AbstractSubCommand {
         if (sender instanceof Player) return;
 
         WorldRouter.getLangFile().reload();
-        WorldRouter.loadWorld();
+        WorldRouter.getWorldRouterCore().restart();
         sender.sendMessage(WorldRouter.getLangFile().getString("reload_success"));
     }
 }
