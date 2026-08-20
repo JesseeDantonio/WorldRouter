@@ -12,14 +12,15 @@ public class WorldRouterCore {
         this.world = world;
     }
 
-    public void restart() {
+    public boolean restart() {
         WorldRouter.getConfigFile().reload();
         Optional<World> world = WorldRouter.loadWorld();
         if(world.isEmpty()) {
-            return;
+            return false;
         }
 
         WorldRouter.getWorldRouterCore().setWorld(world.get());
+        return true;
     }
 
     public World getWorld() {
