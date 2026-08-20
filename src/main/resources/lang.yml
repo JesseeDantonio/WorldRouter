@@ -1,6 +1,7 @@
 reload_success: "&aConfiguration rechargée !"
 no_permission: "&cVous n'avez pas la permission !"
 unknown_subcommand: "Commande inconnue !"
+world_not_found: "&cAucun monde trouvé !"
 help_invalid_page: "&cPage invalide !"
 help:
   1:
