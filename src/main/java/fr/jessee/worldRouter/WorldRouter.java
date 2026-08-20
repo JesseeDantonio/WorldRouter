@@ -1,5 +1,6 @@
 package fr.jessee.worldRouter;
 
+import fr.jessee.worldRouter.command.WRCommand;
 import fr.jessee.worldRouter.feature.ConfigFile;
 import org.bukkit.Bukkit;
 import org.bukkit.World;
@@ -30,6 +31,8 @@ public final class WorldRouter extends JavaPlugin {
             return;
         }
 
+        registerCommands();
+
         worldRouterCore = new WorldRouterCore(world.get());
     }
 
@@ -58,6 +61,10 @@ public final class WorldRouter extends JavaPlugin {
 
     public static ConfigFile getLangFile() {
         return langFile;
+    }
+
+    private void registerCommands() {
+        getCommand("wr").setExecutor(new WRCommand());
     }
 
     public static Optional<World> loadWorld() {
