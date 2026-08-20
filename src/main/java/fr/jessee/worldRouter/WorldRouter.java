@@ -11,6 +11,7 @@ import java.util.Optional;
 public final class WorldRouter extends JavaPlugin {
     private static Plugin instance;
     private static ConfigFile configFile;
+    private static ConfigFile langFile;
     private static WorldRouterCore worldRouterCore;
 
     @Override
@@ -20,6 +21,7 @@ public final class WorldRouter extends JavaPlugin {
         saveDefaultConfig();
 
         configFile = new ConfigFile("config");
+        langFile = new ConfigFile("lang");
         Optional<World> world = Optional.ofNullable(Bukkit.getWorld(configFile.getString("worldName")));
 
         if (world.isEmpty()) {
@@ -52,5 +54,9 @@ public final class WorldRouter extends JavaPlugin {
 
     public static ConfigFile getConfigFile() {
         return configFile;
+    }
+
+    public static ConfigFile getLangFile() {
+        return langFile;
     }
 }

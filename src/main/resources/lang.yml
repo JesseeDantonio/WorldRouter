@@ -1,0 +1,12 @@
+reload_success: "&aConfiguration rechargée !"
+no_permission: "&cVous n'avez pas la permission !"
+unknown_subcommand: "Commande inconnue !"
+help_invalid_page: "&cPage invalide !"
+help:
+  1:
+    - "&6&m-----------------------------------------------------"
+    - "&9DBProvider Help &e(Page 1/1)"
+    - "&e/worldrouter reload - &7Recharge les configurations du plugin."
+    - "&eYou are currently on &fPage 1/1."
+    - "&eTo view other pages, use &9/worldrouter help <page>"
+    - "&6&m-----------------------------------------------------"
