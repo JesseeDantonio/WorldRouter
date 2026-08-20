@@ -22,7 +22,7 @@ public final class WorldRouter extends JavaPlugin {
 
         configFile = new ConfigFile("config");
         langFile = new ConfigFile("lang");
-        Optional<World> world = Optional.ofNullable(Bukkit.getWorld(configFile.getString("worldName")));
+        Optional<World> world = loadWorld();
 
         if (world.isEmpty()) {
             Bukkit.getConsoleSender().sendMessage("World not found. Please check the configuration.");
@@ -58,5 +58,10 @@ public final class WorldRouter extends JavaPlugin {
 
     public static ConfigFile getLangFile() {
         return langFile;
+    }
+
+    public static Optional<World> loadWorld() {
+        WorldRouter.getConfigFile().reload();
+        return Optional.ofNullable(Bukkit.getWorld(configFile.getString("worldName")));
     }
 }
