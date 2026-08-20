@@ -1,6 +1,5 @@
 package fr.jessee.worldRouter;
 
-import org.bukkit.Bukkit;
 import org.bukkit.World;
 
 import java.util.Optional;
@@ -13,19 +12,14 @@ public class WorldRouterCore {
         this.world = world;
     }
 
-    public void start() {
-
-    }
-
-    public void stop() {
-
-    }
-
     public void restart() {
-        Optional<World> world = Optional.ofNullable(Bukkit.getWorld(WorldRouter.getConfigFile().getString("worldName")));
-        if (world.isEmpty()) return;
+        WorldRouter.getConfigFile().reload();
+        Optional<World> world = WorldRouter.loadWorld();
+        if(world.isEmpty()) {
+            return;
+        }
 
-        setWorld(world.get());
+        WorldRouter.getWorldRouterCore().setWorld(world.get());
     }
 
     public World getWorld() {
