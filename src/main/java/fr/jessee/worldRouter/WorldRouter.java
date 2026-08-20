@@ -4,6 +4,7 @@ import fr.jessee.worldRouter.command.WRCommand;
 import fr.jessee.worldRouter.feature.ConfigFile;
 import org.bukkit.Bukkit;
 import org.bukkit.World;
+import org.bukkit.command.PluginCommand;
 import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -27,11 +28,19 @@ public final class WorldRouter extends JavaPlugin {
 
         if (world.isEmpty()) {
             Bukkit.getConsoleSender().sendMessage("World not found. Please check the configuration.");
-            Bukkit.getPluginManager().disablePlugin(WorldRouter.getInstance());
+            Bukkit.getPluginManager().disablePlugin(this);
             return;
         }
 
-        registerCommands();
+        PluginCommand command = getCommand("wr");
+
+        if (command == null) {
+            getLogger().severe("NullPointerException: Command 'worldrouter' not found.");
+            Bukkit.getPluginManager().disablePlugin(this);
+            return;
+        }
+
+        command.setExecutor(new WRCommand());
 
         worldRouterCore = new WorldRouterCore(world.get());
     }
@@ -61,10 +70,6 @@ public final class WorldRouter extends JavaPlugin {
 
     public static ConfigFile getLangFile() {
         return langFile;
-    }
-
-    private void registerCommands() {
-        getCommand("wr").setExecutor(new WRCommand());
     }
 
     public static Optional<World> loadWorld() {
