@@ -1,10 +1,11 @@
 package fr.jessee.worldRouter;
 
+import fr.jessee.worldRouter.iface.WRProvider;
 import org.bukkit.World;
 
 import java.util.Optional;
 
-public class WorldRouterCore {
+public class WorldRouterCore implements WRProvider {
 
     private World world;
 
@@ -19,12 +20,12 @@ public class WorldRouterCore {
             return false;
         }
 
-        WorldRouter.getWorldRouterCore().setWorld(world.get());
+        this.setWorld(world.get());
         return true;
     }
 
-    public World getWorld() {
-        return world;
+    public Optional<World> getWorld() {
+        return Optional.ofNullable(world);
     }
 
     public void setWorld(World world) {
